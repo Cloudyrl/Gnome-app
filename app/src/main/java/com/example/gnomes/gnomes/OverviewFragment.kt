@@ -17,9 +17,11 @@ class OverviewFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = GridViewItemBinding.inflate(inflater)
+        val binding = OverviewFragmentBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
+
+        binding.gnomesGrid.adapter = GnomesGridAdapter()
         return binding.root
     }
 

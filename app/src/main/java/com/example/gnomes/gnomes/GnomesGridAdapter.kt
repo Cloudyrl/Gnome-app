@@ -1,4 +1,4 @@
-package com.example.gnomes.network
+package com.example.gnomes.gnomes
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gnomes.databinding.GridViewItemBinding
+import com.example.gnomes.network.GnomeModel
 
-class GnomesGridAdapter : ListAdapter<GnomeModel, GnomesGridAdapter.GnomeModelViewHolder>(DiffCallback){
+class GnomesGridAdapter : ListAdapter<GnomeModel, GnomesGridAdapter.GnomeModelViewHolder>(
+    DiffCallback
+){
 
     class GnomeModelViewHolder(private var binding: GridViewItemBinding):
         RecyclerView.ViewHolder(binding.root) {
@@ -28,8 +31,12 @@ class GnomesGridAdapter : ListAdapter<GnomeModel, GnomesGridAdapter.GnomeModelVi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup
-                                    , viewType: Int): GnomesGridAdapter.GnomeModelViewHolder {
-        return GnomeModelViewHolder(GridViewItemBinding.inflate(LayoutInflater.from(parent.context)))
+                                    , viewType: Int): GnomeModelViewHolder {
+        return GnomeModelViewHolder(
+            GridViewItemBinding.inflate(
+                LayoutInflater.from(parent.context)
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: GnomeModelViewHolder, position: Int) {
