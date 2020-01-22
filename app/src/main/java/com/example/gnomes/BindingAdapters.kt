@@ -3,8 +3,19 @@ package com.example.gnomes
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.gnomes.network.GnomeModel
+import com.example.gnomes.gnomes.GnomesGridAdapter
+
+
+@BindingAdapter("listData")
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<GnomeModel>?) {
+    val adapter = recyclerView.adapter as GnomesGridAdapter
+    adapter.submitList(data)
+}
+
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
