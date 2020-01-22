@@ -17,9 +17,13 @@ class OverviewViewModel : ViewModel() {
     val status: LiveData<String>
         get() = _status
 
-    private val _gnomeList = MutableLiveData<GnomeModel>()
-    val gnomeList: LiveData<GnomeModel>
+    private val _gnomeList = MutableLiveData<List<GnomeModel>>()
+    val gnomeList: LiveData<List<GnomeModel>>
         get() = _gnomeList
+
+    private val _navigateToSelectedGnome = MutableLiveData<GnomeModel>()
+    val navigateToSelectedGnome: LiveData<GnomeModel>
+        get() = _navigateToSelectedGnome
 
     private var viewModelJob = Job()
 
@@ -33,11 +37,8 @@ class OverviewViewModel : ViewModel() {
         coroutineScope.launch {
             var getGnomesDeferred = GnomeApi.retrofitService.getGnomes()
             try{
-
                 var listResult = getGnomesDeferred.await()
-                if (listResult.gnomeList.size > 0) {
-                    _gnomeList.value = listResult.gnomeList[0]
-                }
+                _gnomeList.value = listResult.gnomeList
             } catch (e: Exception){
                 _status.value = "Failure ${e.message}"
             }
@@ -47,5 +48,13 @@ class OverviewViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun displayGnomeDetails(gnomeModel: GnomeModel){
+        _navigateToSelectedGnome.value = gnomeModel
+    }
+
+    fun displayGnomeDetailsComplete(){
+        _navigateToSelectedGnome.value = null
     }
 }

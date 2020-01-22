@@ -1,7 +1,18 @@
 package com.example.gnomes.detail
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.gnomes.network.GnomeModel
 
-class DetailViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class DetailViewModel(gnomeModel: GnomeModel,app: Application):AndroidViewModel(app) {
+    private val _selectedGnome = MutableLiveData<GnomeModel>()
+    val selectedGnome: LiveData<GnomeModel>
+        get() = _selectedGnome
+
+    init {
+        _selectedGnome.value = gnomeModel
+    }
 }
