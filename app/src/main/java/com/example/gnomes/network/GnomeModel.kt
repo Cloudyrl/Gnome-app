@@ -8,7 +8,7 @@ data class GnomeModel(
     val id: Int,
     val name: String,
     @Json(name = "thumbnail")
-    val thumbnailUrl: String,
+    val imageUrl: String,
     val age: Int,
     val weight: Double,
     val height: Double,

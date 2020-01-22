@@ -6,11 +6,10 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-@BindingAdapter("thumbnailUrl")
-fun bindImage(imgView: ImageView, thumbnailUrl:String?){
-    thumbnailUrl?.let{
-        val imgUri = thumbnailUrl.toUri().buildUpon()
-            .scheme("https").build()
+@BindingAdapter("imageUrl")
+fun bindImage(imgView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         Glide.with(imgView.context)
             .load(imgUri)
             .apply(RequestOptions()

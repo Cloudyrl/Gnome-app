@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.gnomes.network.GnomeApi
+import com.example.gnomes.network.GnomeModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -12,9 +13,13 @@ import java.lang.Exception
 
 class OverviewViewModel : ViewModel() {
 
-    private val _response = MutableLiveData<String>()
-    val response: LiveData<String>
-        get() = _response
+    private val _status = MutableLiveData<String>()
+    val status: LiveData<String>
+        get() = _status
+
+    private val _gnomeList = MutableLiveData<GnomeModel>()
+    val gnomeList: LiveData<GnomeModel>
+        get() = _gnomeList
 
     private var viewModelJob = Job()
 
@@ -30,9 +35,11 @@ class OverviewViewModel : ViewModel() {
             try{
 
                 var listResult = getGnomesDeferred.await()
-                _response.value = "Success: ${listResult.gnomeList.size} Gnomes retrived"
+                if (listResult.gnomeList.size > 0) {
+                    _gnomeList.value = listResult.gnomeList[0]
+                }
             } catch (e: Exception){
-                _response.value = "Failure ${e.message}"
+                _status.value = "Failure ${e.message}"
             }
         }
     }
