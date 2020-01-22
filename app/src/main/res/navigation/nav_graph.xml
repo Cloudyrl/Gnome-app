@@ -16,5 +16,9 @@
         android:id="@+id/detailFragment"
         android:name="com.example.gnomes.detail.DetailFragment"
         android:label="DetailFragment"
-        tools:layout="@layout/detail_fragment"/>
+        tools:layout="@layout/detail_fragment">
+        <argument
+            android:name="selectedGnome"
+            app:argType="com.example.android.gnome.network.GnomeModel" />
+    </fragment>
 </navigation>
