@@ -2,7 +2,6 @@ package com.example.gnomes.gnomes
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ExpandableListView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -51,4 +50,5 @@ class GnomesGridAdapter(val onClickListener: OnClickListener) : ListAdapter<Gnom
     class OnClickListener(val clickListener: (gnomeModel: GnomeModel) -> Unit) {
         fun onClick(gnomeModel:GnomeModel) = clickListener(gnomeModel)
     }
+
 }

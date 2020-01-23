@@ -31,12 +31,6 @@ class OverviewFragment : Fragment() {
                 viewModel.displayGnomeDetailsComplete()
             }
         })
-        setHasOptionsMenu(true)
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater) {
-        inflater.inflate(R.menu.search_bar, menu)
-        super.onCreateOptionsMenu(menu, inflater)
     }
 }
