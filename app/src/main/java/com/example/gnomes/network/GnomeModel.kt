@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class GnomeModel(
     val id: Int,
     val name: String,
@@ -16,4 +17,4 @@ data class GnomeModel(
     val hairColor: String,
     val professions: List<String>,
     val friends: List<String>
-)
+): Parcelable

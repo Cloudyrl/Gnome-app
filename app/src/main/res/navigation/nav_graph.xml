@@ -19,6 +19,6 @@
         tools:layout="@layout/detail_fragment">
         <argument
             android:name="selectedGnome"
-            app:argType="com.example.android.gnome.network.GnomeModel" />
+            app:argType="com.example.gnomes.network.GnomeModel" />
     </fragment>
 </navigation>
