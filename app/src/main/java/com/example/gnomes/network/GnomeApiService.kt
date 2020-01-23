@@ -27,6 +27,6 @@ interface GnomeApiService {
             Deferred<GnomeListModel>
 }
 
-object GnomeApi{
-    val retrofitService: GnomeApiService by lazy { retrofit.create(GnomeApiService::class.java)}
+object GnomeApi {
+    val retrofitService: GnomeApiService by lazy { retrofit.create(GnomeApiService::class.java) }
 }

@@ -31,19 +31,19 @@ class OverviewViewModel : ViewModel() {
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init{
+    init {
         getGnomeList()
     }
 
     private fun getGnomeList() {
         coroutineScope.launch {
             var getGnomesDeferred = GnomeApi.retrofitService.getGnomes()
-            try{
+            try {
                 _status.value = GnomeApiStatus.LOADING
                 var listResult = getGnomesDeferred.await()
                 _status.value = GnomeApiStatus.DONE
                 _gnomeList.value = listResult.gnomeList
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 _status.value = GnomeApiStatus.ERROR
                 _gnomeList.value = ArrayList()
             }
@@ -55,11 +55,11 @@ class OverviewViewModel : ViewModel() {
         viewModelJob.cancel()
     }
 
-    fun displayGnomeDetails(gnomeModel: GnomeModel){
+    fun displayGnomeDetails(gnomeModel: GnomeModel) {
         _navigateToSelectedGnome.value = gnomeModel
     }
 
-    fun displayGnomeDetailsComplete(){
+    fun displayGnomeDetailsComplete() {
         _navigateToSelectedGnome.value = null
     }
 }

@@ -7,4 +7,8 @@
     <string name="weight_label">Weight :</string>
     <string name="height_label">Height :</string>
     <string name="hair_color_label">Hair Color :</string>
+    <string name="age_label">Age :</string>
+    <string name="professions_label">Professions</string>
+    <string name="friends_label">Friends</string>
+    <string name="gnome_label">Gnome</string>
 </resources>

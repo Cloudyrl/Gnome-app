@@ -8,11 +8,12 @@ import java.lang.IllegalArgumentException
 
 class DetailViewModelFactory(
     private val gnomeModel: GnomeModel,
-    private val application: Application) : ViewModelProvider.Factory{
+    private val application: Application
+) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(DetailViewModel::class.java)){
-            return DetailViewModel(gnomeModel,application) as T
+        if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
+            return DetailViewModel(gnomeModel, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

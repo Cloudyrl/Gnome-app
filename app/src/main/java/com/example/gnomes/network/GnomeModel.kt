@@ -17,4 +17,4 @@ data class GnomeModel(
     val hairColor: String,
     val professions: List<String>,
     val friends: List<String>
-): Parcelable
+) : Parcelable

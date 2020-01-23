@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gnomes.R
-import kotlinx.android.synthetic.main.detail_fragment.view.*
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class GnomeListAdapter (val items: List<String>, val context: Context) :RecyclerView.Adapter<GnomeListAdapter.ViewHolder>(){
+class GnomeListAdapter(val items: List<String>, val context: Context) :
+    RecyclerView.Adapter<GnomeListAdapter.ViewHolder>() {
 
 
-    class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Holds the TextView that will add each animal to
-        val List_text = view.item_list_text
+        val listText = view.item_list_text
     }
 
     override fun getItemCount(): Int {
@@ -26,6 +26,6 @@ class GnomeListAdapter (val items: List<String>, val context: Context) :Recycler
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.List_text.text = items.get(position)
+        holder.listText.text = items.get(position)
     }
 }
