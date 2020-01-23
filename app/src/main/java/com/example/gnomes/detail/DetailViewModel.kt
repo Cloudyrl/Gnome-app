@@ -15,4 +15,16 @@ class DetailViewModel(gnomeModel: GnomeModel,app: Application):AndroidViewModel(
     init {
         _selectedGnome.value = gnomeModel
     }
+
+    fun displayWeight(): String{
+        return "%.2f".format(_selectedGnome.value?.weight)
+    }
+
+    fun displayHeight(): String{
+        return "%.2f".format(_selectedGnome.value?.height)
+    }
+
+    fun displayAge(): String{
+        return _selectedGnome.value?.age.toString()
+    }
 }
