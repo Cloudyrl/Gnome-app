@@ -11,10 +11,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
+enum class GnomeApiStatus { LOADING, ERROR, DONE }
+
 class OverviewViewModel : ViewModel() {
 
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String>
+    private val _status = MutableLiveData<GnomeApiStatus>()
+    val status: LiveData<GnomeApiStatus>
         get() = _status
 
     private val _gnomeList = MutableLiveData<List<GnomeModel>>()
@@ -37,10 +39,13 @@ class OverviewViewModel : ViewModel() {
         coroutineScope.launch {
             var getGnomesDeferred = GnomeApi.retrofitService.getGnomes()
             try{
+                _status.value = GnomeApiStatus.LOADING
                 var listResult = getGnomesDeferred.await()
+                _status.value = GnomeApiStatus.DONE
                 _gnomeList.value = listResult.gnomeList
             } catch (e: Exception){
-                _status.value = "Failure ${e.message}"
+                _status.value = GnomeApiStatus.ERROR
+                _gnomeList.value = ArrayList()
             }
         }
     }
