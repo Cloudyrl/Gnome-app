@@ -10,7 +10,9 @@
         android:label="Gnomes">
         <action
             android:id="@+id/action_overviewFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
