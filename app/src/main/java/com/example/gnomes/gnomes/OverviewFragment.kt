@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.gnomes.databinding.GridViewItemBinding
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.gnomes.databinding.OverviewFragmentBinding
 
 class OverviewFragment : Fragment() {
@@ -21,7 +22,17 @@ class OverviewFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
-        binding.gnomesGrid.adapter = GnomesGridAdapter()
+        binding.gnomesGrid.adapter = GnomesGridAdapter(GnomesGridAdapter.OnClickListener{
+            viewModel.displayGnomeDetails(it)
+        })
+
+        viewModel.navigateToSelectedGnome.observe(this, Observer {
+            if (null != it){
+                this.findNavController().navigate(OverviewFragmentDirections.actionOverviewFragmentToDetailFragment(it))
+                viewModel.displayGnomeDetailsComplete()
+            }
+        })
+
         return binding.root
     }
 
