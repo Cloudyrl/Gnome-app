@@ -2,12 +2,11 @@ package com.example.gnomes.gnomes
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.gnomes.R
 import com.example.gnomes.databinding.OverviewFragmentBinding
 
 class OverviewFragment : Fragment() {
@@ -32,8 +31,12 @@ class OverviewFragment : Fragment() {
                 viewModel.displayGnomeDetailsComplete()
             }
         })
-
+        setHasOptionsMenu(true)
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_bar, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 }
