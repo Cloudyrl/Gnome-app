@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.gnomes.network.GnomeModel
 import java.lang.IllegalArgumentException
 
+//Fabrica del ViewModel de detalles
 class DetailViewModelFactory(
     private val gnomeModel: GnomeModel,
     private val application: Application

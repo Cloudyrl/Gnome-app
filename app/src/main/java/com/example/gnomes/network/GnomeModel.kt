@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
+// Modelo parceable para poder ser agregado en el bundle de la navegacion
 @Parcelize
 data class GnomeModel(
     val id: Int,

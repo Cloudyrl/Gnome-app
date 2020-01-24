@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gnomes.R
 import kotlinx.android.synthetic.main.list_item.view.*
 
+//Adaptador del RecyclerView de la lista de profesiones y amigos
 class GnomeListAdapter(val items: List<String>, val context: Context) :
     RecyclerView.Adapter<GnomeListAdapter.ViewHolder>() {
 

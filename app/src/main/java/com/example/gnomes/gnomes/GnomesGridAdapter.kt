@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gnomes.databinding.GridViewItemBinding
 import com.example.gnomes.network.GnomeModel
 
+//Gnomes Grid RecyclerViewAdapter.
 class GnomesGridAdapter(val onClickListener: OnClickListener) :
     ListAdapter<GnomeModel, GnomesGridAdapter.GnomeModelViewHolder>(
         DiffCallback
