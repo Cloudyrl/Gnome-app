@@ -34,7 +34,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
-@BindingAdapter("marsApiStatus")
+@BindingAdapter("gnomeApiStatus")
 fun bindStatus(statusImageView: ImageView, status: GnomeApiStatus?) {
     when (status) {
         GnomeApiStatus.DONE -> {

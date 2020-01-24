@@ -33,6 +33,7 @@ class OverviewViewModel : ViewModel() {
 
     init {
         getGnomeList()
+        _status.value = GnomeApiStatus.LOADING
     }
 
     private fun getGnomeList() {
